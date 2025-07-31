@@ -1,12 +1,12 @@
 //! Validator configuration
 
+use cometbft::chain;
+use cometbft_config::net;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
-use tendermint::chain;
-use tendermint_config::net;
 use tendermint_p2p::secret_connection;
 
-/// Validator configuration
+// Validator configuration
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ValidatorConfig {
@@ -27,7 +27,7 @@ pub struct ValidatorConfig {
     pub secret_key: Option<PathBuf>,
 
     /// Height at which to stop signing
-    pub max_height: Option<tendermint::block::Height>,
+    pub max_height: Option<cometbft::block::Height>,
 
     /// Version of Secret Connection protocol to use when connecting
     pub protocol_version: ProtocolVersion,

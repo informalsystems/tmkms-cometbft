@@ -15,10 +15,10 @@ use crate::{
     keyring::{self, KeyRing},
     prelude::*,
 };
+pub use cometbft::chain::Id;
 use std::{path::PathBuf, sync::Mutex};
-pub use tendermint::chain::Id;
 
-/// Information about a particular Tendermint blockchain network
+// Information about a particular Tendermint blockchain network
 pub struct Chain {
     /// ID of a particular chain
     pub id: Id,

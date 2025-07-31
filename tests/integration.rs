@@ -2,6 +2,7 @@
 
 use abscissa_core::prelude::warn;
 use chrono::{DateTime, Utc};
+use cometbft_proto as proto;
 use prost::Message;
 use rand::Rng;
 use signature::Verifier;
@@ -15,7 +16,6 @@ use std::{
 };
 use tempfile::NamedTempFile;
 use tendermint_p2p::secret_connection::{self, SecretConnection};
-use tendermint_proto as proto;
 use tmkms::{
     config::provider::KeyType,
     connection::unix::UnixConnection,
