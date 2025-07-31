@@ -18,7 +18,7 @@ use crate::{
 pub use cometbft::chain::Id;
 use std::{path::PathBuf, sync::Mutex};
 
-// Information about a particular Tendermint blockchain network
+/// Information about a particular Tendermint blockchain network
 pub struct Chain {
     /// ID of a particular chain
     pub id: Id,

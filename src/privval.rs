@@ -4,7 +4,7 @@ use bytes::{Bytes, BytesMut};
 use cometbft::{block, chain, consensus, vote, Error, Proposal, Vote};
 use cometbft_proto::{self as proto, Error as ProtobufError};
 
-// Message codes.
+/// Message codes.
 pub type SignedMsgCode = i32;
 
 /// Code for unknown signed messages.

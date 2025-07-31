@@ -16,10 +16,10 @@ use crate::{
 };
 use cometbft::{account, CometbftKey};
 
-// File encoding for software-backed secret keys
+/// File encoding for software-backed secret keys
 pub type SecretKeyEncoding = subtle_encoding::Base64;
 
-// Signing keyring
+/// Signing keyring
 pub struct KeyRing {
     /// ECDSA keys in the keyring
     ecdsa_keys: Map<CometbftKey, ecdsa::Signer>,

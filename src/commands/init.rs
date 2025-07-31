@@ -32,7 +32,7 @@ macro_rules! abort {
     };
 }
 
-// `init` subcommand
+/// `init` subcommand
 #[derive(Command, Debug, Parser)]
 pub struct InitCommand {
     /// Tendermint networks to configure (comma separated)

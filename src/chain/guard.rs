@@ -1,8 +1,8 @@
 use super::{Chain, Id, Registry};
 use std::sync::RwLockReadGuard;
 
-// Wrapper for a `RwLockReadGuard<'static, Registry>`, allowing access to
-// global information about particular Tendermint networks / "chains"
+/// Wrapper for a `RwLockReadGuard<'static, Registry>`, allowing access to
+/// global information about particular Tendermint networks / "chains"
 pub struct Guard<'lock>(RwLockReadGuard<'lock, Registry>);
 
 impl<'lock> From<RwLockReadGuard<'lock, Registry>> for Guard<'lock> {
