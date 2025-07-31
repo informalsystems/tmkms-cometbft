@@ -1,11 +1,11 @@
  # CometBFT KMS 🔐
 
-#![Crate][crate-image]][crate-link]
-#![Build Status][build-image]][build-link]
-#![Apache 2.0 Licensed][license-image]][license-link]
-#[MSRV][rustc-image]
+![Crate][crate-image]
+![Build Status][build-image]
+![Apache 2.0 Licensed][license-image]
+![MSRV][rustc-image]
 
-Key Management System for [CometBFT] applications such as Cosmos Validators].
+Key Management System for [CometBFT] applications such as [Cosmos Validators].
 
 Provides isolated, optionally HSM-backed signing key management for CometBFT
 applications including validators, oracles, IBC relayers, and other transaction
