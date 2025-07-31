@@ -282,9 +282,9 @@ mod tests {
             height: 500001,
             round: 2,
             timestamp: Some(example_timestamp()),
-            block_id: Some(proto::types::BlockId {
+            block_id: Some(proto::types::v1::BlockId {
                 hash: b"some hash00000000000000000000000".to_vec(),
-                part_set_header: Some(proto::types::PartSetHeader {
+                part_set_header: Some(proto::types::v1::PartSetHeader {
                     total: 1000000,
                     hash: b"parts_hash0000000000000000000000".to_vec(),
                 }),
