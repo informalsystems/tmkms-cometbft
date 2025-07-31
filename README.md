@@ -1,5 +1,7 @@
  # CometBFT KMS 🔐
 
+ THIS IS ALPHA SOFTWARE AND NOT TESTED FOR PRODUCTION USE
+
 ![Crate][crate-image]
 ![Build Status][build-image]
 ![Apache 2.0 Licensed][license-image]
@@ -11,7 +13,7 @@ Provides isolated, optionally HSM-backed signing key management for CometBFT
 applications including validators, oracles, IBC relayers, and other transaction
 signing applications.
 
-# About
+## About
 
 This repository contains `tmkms`, a key management service intended to be deployed
 in conjunction with [CometBFT] applications (ideally on separate physical hosts)
@@ -21,12 +23,12 @@ which provides the following:
 - **Double-signing** prevention even in the event the validator process is compromised
 - **Hardware security module** storage for validator keys which can survive host compromise
 
-# Status
+## Status
 
 CometBFT KMS is currently *beta quality*. It has undergone one security audit
 with only one low-severity finding.
 
-## Double Signing / High Availability
+### Double Signing / High Availability
 
 CometBFT KMS implements *beta quality* double signing detection.
 It has undergone some testing, however we do not (yet) recommend using the KMS
@@ -37,7 +39,7 @@ In particular, there is presently **no double signing defense** in the case
 that multiple KMS instances are running simultaneously and connecting to
 multiple validators on the same network.
 
-## Signing Providers
+### Signing Providers
 
 You **MUST** select one or more signing provider(s) when compiling the KMS,
 passed as the argument to the `--features` flag (see below for more
