@@ -21,9 +21,10 @@ use crate::{
 /// RPC requests to the KMS
 #[derive(Debug)]
 pub enum Request {
-    /// Sign the given message
+    /// Sign the given proposal
     SignProposal(Proposal),
-    SignVote(Vote),
+    /// Sign the given vote
+    SignVote((Vote, bool)), // skip_extension_signing
     ShowPublicKey,
     PingRequest,
 }
@@ -67,9 +68,12 @@ impl Request {
                 proto::privval::v1::SignVoteRequest {
                     vote: Some(vote),
                     chain_id,
-                    skip_extension_signing: false,
+                    skip_extension_signing,
                 },
-            )) => (Request::SignVote(vote.try_into()?), chain_id),
+            )) => (
+                Request::SignVote((vote.try_into()?, skip_extension_signing)),
+                chain_id,
+            ),
             Some(proto::privval::v1::message::Sum::SignProposalRequest(
                 proto::privval::v1::SignProposalRequest {
                     proposal: Some(proposal),
@@ -102,7 +106,7 @@ impl Request {
     pub fn into_signable_msg(self) -> Result<SignableMsg, Error> {
         match self {
             Self::SignProposal(proposal) => Ok(proposal.into()),
-            Self::SignVote(vote) => Ok(vote.into()),
+            Self::SignVote((vote, _)) => Ok(vote.into()),
             _ => fail!(
                 ErrorKind::InvalidMessageError,
                 "expected a signable message type: {:?}",
