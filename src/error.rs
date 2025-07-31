@@ -95,6 +95,7 @@ pub enum ErrorKind {
     #[error("YubiHSM error")]
     YubihsmError,
 
+    /// Protobuf encoding error
     #[error("protobuf error")]
     ProtobufError,
 }
