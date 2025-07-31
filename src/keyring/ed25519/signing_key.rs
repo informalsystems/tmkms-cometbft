@@ -118,13 +118,13 @@ impl TryFrom<&[u8]> for SigningKey {
             // Assume seed key.
             slice
                 .try_into()
-                .map(|e| SigningKey::Ed25519(e))
+                .map(SigningKey::Ed25519)
                 .map_err(|_| ErrorKind::InvalidKey.into())
         } else if slice.len() == SigningKey::EXPANDED_BYTE_SIZE {
             // Assume key is big-endian encoded expanded secret key. (SHA512 hashed seed key.)
             slice[0..SigningKey::EXPANDED_BYTE_SIZE]
                 .try_into()
-                .map(|e| SigningKey::Ed25519Expanded(e))
+                .map(SigningKey::Ed25519Expanded)
                 .map_err(|_| ErrorKind::InvalidKey.into())
         } else if slice.len() == (SigningKey::EXPANDED_BYTE_SIZE + SigningKey::PUBLIC_KEY_BYTE_SIZE)
         {
@@ -136,7 +136,7 @@ impl TryFrom<&[u8]> for SigningKey {
             slice_copy[0..32].reverse();
             slice_copy[0..SigningKey::EXPANDED_BYTE_SIZE]
                 .try_into()
-                .map(|e| SigningKey::Ed25519Expanded(e))
+                .map(SigningKey::Ed25519Expanded)
                 .map_err(|_| ErrorKind::InvalidKey.into())
         } else {
             Err(ErrorKind::InvalidKey

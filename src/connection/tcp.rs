@@ -57,7 +57,7 @@ pub fn open_secret_connection(
     if let Some(expected_peer_id) = peer_id {
         if expected_peer_id
             .as_bytes()
-            .ct_eq(&actual_peer_id.as_bytes())
+            .ct_eq(actual_peer_id.as_bytes())
             .unwrap_u8()
             == 0
         {
